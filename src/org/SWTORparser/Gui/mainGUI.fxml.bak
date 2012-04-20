@@ -24,7 +24,7 @@
           <content>
             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="370.0" prefWidth="600.0000999999975">
               <children>
-                <Button id="button1" layoutX="14.0" layoutY="14.0" onAction="#buttonLogLocation" text="Log Location" />
+                <Button id="button1" layoutX="14.0" layoutY="14.0" text="Log Location" />
               </children>
             </AnchorPane>
           </content>
