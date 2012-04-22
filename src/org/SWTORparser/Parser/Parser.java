@@ -1,5 +1,6 @@
 package org.SWTORparser.Parser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import swtor.parser.model.*;
@@ -25,11 +26,15 @@ public class Parser {
 	 * This method initializes the results
 	 */
 	public void parse(){
-		long index = 0;
+		long l_index = 1;
+		int i_index = 0;
+		parsedContents = new ArrayList<>();
 		for(String line : fileContents){
-			parsedContents.add(new LogEntry(index));
 			try {
-				regex.parse(parsedContents.get((int)index), line);
+				parsedContents.add(new LogEntry(l_index));
+				regex.parse(parsedContents.get(i_index), line);
+				l_index++;
+				i_index++;
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -48,7 +53,7 @@ public class Parser {
 	
 	/**
 	 * This method initializes the the Results class, if not already initialized
-	 * @return
+	 * @return Results
 	 */
 	public Results getResults(){
 		if(results == null){
