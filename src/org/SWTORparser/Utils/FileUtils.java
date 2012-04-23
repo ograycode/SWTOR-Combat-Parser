@@ -1,4 +1,4 @@
-package org.SWTORparser.File;
+package org.SWTORparser.Utils;
 
 import java.io.*;
 import java.nio.file.*;
@@ -10,7 +10,7 @@ import java.util.*;
  * @author Jason Gray
  *
  */
-public class File {
+public class FileUtils {
 
 	private Path file;
 
@@ -18,7 +18,7 @@ public class File {
 	 * Pass the full file and path to initialize
 	 * @param fileName
 	 */
-	public File(String fileName) {
+	public FileUtils(String fileName) {
 		this.file = FileSystems.getDefault().getPath(fileName);
 	}
 	

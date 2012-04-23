@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.SWTORparser.File.File;
 import org.SWTORparser.Parser.Parser;
 import org.SWTORparser.Parser.Results;
+import org.SWTORparser.Utils.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class ResultsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		List<String> contents = new File("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-18_05_59_29_235600.txt").readFile();
+		List<String> contents = new FileUtils("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-18_05_59_29_235600.txt").readFile();
 		results = new Parser(contents).parse().getResults();
 		results.calculate();
 	}

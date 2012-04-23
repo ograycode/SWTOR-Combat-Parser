@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.SWTORparser.File.File;
 import org.SWTORparser.Parser.Parser;
+import org.SWTORparser.Utils.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class ParserTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		contents = new File("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-17_10_39_06_966767.txt").readFile();
+		contents = new FileUtils("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-17_10_39_06_966767.txt").readFile();
 	}
 
 	@Test
