@@ -1,7 +1,7 @@
-The aim of this project is to provide realtime and historic analysis to Star Wars the Old Republic ("SWTOR") combat logs, which were first introduced in patch 1.2. 
+The aim of this project is to provide real-time and historic analysis to Star Wars the Old Republic ("SWTOR") combat logs, which were first introduced in patch 1.2. 
 
 Goals:
-Provide anatylitics to SWTOR combat logs
+Provide analytics to SWTOR combat logs
 Cross-platform
 100% Open Source
 Community driven development
@@ -10,7 +10,13 @@ Free as in beer
 Technology:
 Java7
 JavaFx 2.1 beta
-ini4j
+
+Dependencies:
+ini4j (http://ini4j.sourceforge.net/)
+swtor-parser (https://github.com/ezet/swtor-parser)
+
+Build:
+You must point to ini4j (currently under the lib folder), as well as JavaFx 2.1 beta in your build path. swtor-parser is a project dependency, so it must be in your eclipse workspace (named Swtor Parser). 
 
 Contribution:
 Anyone is free to contribute to the project. However, any changes must be platform agnostic, and be supported by unit testing. 
