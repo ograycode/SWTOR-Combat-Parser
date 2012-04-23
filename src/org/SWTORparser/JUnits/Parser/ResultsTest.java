@@ -35,17 +35,23 @@ public class ResultsTest {
 
 	@Test
 	public void testGetStartTime() {
-		System.out.println("Start Time: "+results.getStartTime(index).toString());
+		System.out.println("Start Time: "+results.getStartTime(index));
 	}
 
 	@Test
 	public void testGetEndTime() {
 		System.out.println("End Time: "+results.getEndTime(index));
 	}
+	
+	@Test
+	public void testGetCombatLengthInSeconds(){
+		assertEquals(22, results.getCombatLengthInSeconds(index));
+		System.out.println("Combat length in seconds: "+results.getCombatLengthInSeconds(index));
+	}
 
 	@Test
 	public void testGetDPS() {
-		fail("Not yet implemented");
+		System.out.println("DPS: "+results.getDPS(index));
 	}
 
 }

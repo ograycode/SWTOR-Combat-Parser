@@ -63,13 +63,16 @@ public class Results {
 		return this.endTime.get(index);
 	}
 	
-	public long getDPS(int index){
-		//TODO
-		return 0;
+	public double getDPS(int index){
+		return (new Double(this.damage.get(index))/new Double(this.getCombatLengthInSeconds(index)));
 	}
 	
 	public int getCombatCount(){
 		return this.damage.size();
+	}
+	
+	public long getCombatLengthInSeconds(int index){
+		return (this.getEndTime(index).getTimeInMillis()-this.getStartTime(index).getTimeInMillis())/1000;
 	}
 
 }
