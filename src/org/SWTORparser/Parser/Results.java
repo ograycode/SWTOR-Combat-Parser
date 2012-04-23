@@ -34,7 +34,7 @@ public class Results {
 				this.startTime.add(entry.getTime());
 			}
 			if (inCombat){
-				if(entry.sourceIsPlayer()){
+				if(entry.sourceIsPlayer() && entry.getType() == EntryType.DAMAGE){
 					addDamage(index, entry.getValue());
 				}
 			}
@@ -51,7 +51,8 @@ public class Results {
 	}
 	
 	private void addDamage(int index, int damage){
-		this.damage.add(index, this.damage.get(index) + damage);
+		int updatedDamage = this.damage.get(index) + damage;
+		this.damage.set(index, updatedDamage);
 	}
 	
 	public Calendar getStartTime(int index){
@@ -59,12 +60,16 @@ public class Results {
 	}
 	
 	public Calendar getEndTime(int index){
-		return this.getEndTime(index);
+		return this.endTime.get(index);
 	}
 	
 	public long getDPS(int index){
 		//TODO
 		return 0;
+	}
+	
+	public int getCombatCount(){
+		return this.damage.size();
 	}
 
 }

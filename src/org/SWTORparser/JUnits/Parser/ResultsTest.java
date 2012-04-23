@@ -13,26 +13,34 @@ import org.junit.Test;
 public class ResultsTest {
 	
 	Results results;
+	int index = 0; 
 
 	@Before
 	public void setUp() throws Exception {
-		List<String> contents = new File("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-17_10_39_06_966767.txt").readFile();
-		results = new Parser(contents).getResults();
+		List<String> contents = new File("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-18_05_59_29_235600.txt").readFile();
+		results = new Parser(contents).parse().getResults();
+		results.calculate();
+	}
+	
+	@Test
+	public void testGetCombatCount(){
+		assertEquals(3, results.getCombatCount());
+		System.out.println("Combat Sessions: " + results.getCombatCount());
 	}
 
 	@Test
 	public void testGetDamage() {
-		fail("Not yet implemented");
+		System.out.println("Damage: "+results.getDamage(index));
 	}
 
 	@Test
 	public void testGetStartTime() {
-		fail("Not yet implemented");
+		System.out.println("Start Time: "+results.getStartTime(index).toString());
 	}
 
 	@Test
 	public void testGetEndTime() {
-		fail("Not yet implemented");
+		System.out.println("End Time: "+results.getEndTime(index));
 	}
 
 	@Test

@@ -24,8 +24,8 @@ public class ParserTest {
 	public void testGetEntry() {
 		Parser parser = new Parser(contents);
 		parser.parse();
-		LogEntry entry = parser.getEntry(0);
-		assertEquals(entry.getLineNumber(), 1);
+		LogEntry entry = parser.getEntry(1);
+		assertEquals(entry.getLineNumber(), 2);
 	}
 
 }

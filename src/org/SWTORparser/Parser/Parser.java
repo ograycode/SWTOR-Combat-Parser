@@ -25,7 +25,7 @@ public class Parser {
 	/**
 	 * This method initializes the results
 	 */
-	public void parse(){
+	public Parser parse(){
 		long l_index = 1;
 		int i_index = 0;
 		parsedContents = new ArrayList<>();
@@ -40,6 +40,7 @@ public class Parser {
 				e.printStackTrace();
 			}
 		}
+		return this;
 	}
 	
 	/**
@@ -57,7 +58,7 @@ public class Parser {
 	 */
 	public Results getResults(){
 		if(results == null){
-			new Results(parsedContents);
+			results = new Results(parsedContents);
 		}
 		return results;
 	}
