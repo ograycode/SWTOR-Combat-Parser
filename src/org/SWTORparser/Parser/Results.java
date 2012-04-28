@@ -15,6 +15,7 @@ public class Results {
 	List<Calendar> startTime;
 	List<Calendar> endTime;
 	List<String> fightName;
+	List<Combat> combat;
 
 	public Results(List<LogEntry> parsedContents) {
 		this.parsedContents = parsedContents;
@@ -22,6 +23,7 @@ public class Results {
 		startTime = new ArrayList<>();
 		endTime = new ArrayList<>();
 		fightName = new ArrayList<>();
+		combat = new ArrayList<>();
 	}
 	
 	public void calculate(){
@@ -32,49 +34,59 @@ public class Results {
 				inCombat = true;
 				this.damage.add(0);
 				this.startTime.add(entry.getTime());
+				//Added for refactoring
+				this.combat.add(new Combat(this.parsedContents));
+				this.combat.get(index).setStartTime(entry.getTime());
+				this.combat.get(index).setPlayerName(entry.getSource());
 			}
 			if (inCombat){
 				if(entry.sourceIsPlayer() && entry.getType() == EntryType.DAMAGE){
 					addDamage(index, entry.getValue());
+					//Added for refactoring
+					this.combat.get(index).addDamage(entry.getValue());
 				}
 			}
 			if (entry.getType() == EntryType.EXIT_COMBAT){
 				inCombat = false;
+				//Added for refactoring
+				this.combat.get(index).setEndTime(entry.getTime());
+				//Old code below
 				index++;
 				this.endTime.add(entry.getTime());
 			}
 		}
 	}
-	
+	@Deprecated
 	public Integer getDamage(int index){
 		return this.damage.get(index);
 	}
-	
+	@Deprecated
 	private void addDamage(int index, int damage){
 		int updatedDamage = this.damage.get(index) + damage;
 		this.damage.set(index, updatedDamage);
 	}
-	
+	@Deprecated
 	public Calendar getStartTime(int index){
 		return this.startTime.get(index);
 	}
-	
+	@Deprecated
 	public Calendar getEndTime(int index){
 		return this.endTime.get(index);
 	}
-	
+	@Deprecated
 	public double getDPS(int index){
 		return (new Double(this.damage.get(index))/new Double(this.getCombatLengthInSeconds(index)));
 	}
-	
+	@Deprecated
 	public int getCombatCount(){
 		return this.damage.size();
 	}
-	
+	@Deprecated
 	public long getCombatLengthInSeconds(int index){
 		return (this.getEndTime(index).getTimeInMillis()-this.getStartTime(index).getTimeInMillis())/1000;
 	}
 
+	@Deprecated
 	public double getDPS(Calendar startTime, long seconds) {
 		double dps = 0;
 		long localEndTime = startTime.getTimeInMillis()/1000;
@@ -89,6 +101,14 @@ public class Results {
 		}
 		
 		return dps/seconds;
+	}
+	
+	public Combat getCombatResult(int index){
+		return this.combat.get(index);
+	}
+	
+	public List<Combat> getAllCombatResults(){
+		return this.combat;
 	}
 
 }
