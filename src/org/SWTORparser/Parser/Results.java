@@ -75,4 +75,20 @@ public class Results {
 		return (this.getEndTime(index).getTimeInMillis()-this.getStartTime(index).getTimeInMillis())/1000;
 	}
 
+	public double getDPS(Calendar startTime, long seconds) {
+		double dps = 0;
+		long localEndTime = startTime.getTimeInMillis()/1000;
+		localEndTime = localEndTime+seconds;
+		for (LogEntry entry : parsedContents){
+			if (entry.getTime().getTimeInMillis() >= startTime.getTimeInMillis()
+					&& entry.getTime().getTimeInMillis()/1000 <= localEndTime
+					&& entry.sourceIsPlayer()
+					&& entry.getType() == EntryType.DAMAGE){
+				dps += entry.getValue();
+			}
+		}
+		
+		return dps/seconds;
+	}
+
 }

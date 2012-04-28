@@ -2,6 +2,7 @@ package org.SWTORparser.JUnits.Parser;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.SWTORparser.Parser.Parser;
@@ -17,7 +18,7 @@ public class ResultsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		List<String> contents = new FileUtils("C:\\Users\\jason.a.gray\\git\\swtor-parser\\SampleLogs\\combat_2012-03-18_05_59_29_235600.txt").readFile();
+		List<String> contents = new FileUtils("C:\\Users\\TomJoad\\git\\swtor-parser\\SampleLogs\\combat_2012-03-18_05_59_29_235600.txt").readFile();
 		results = new Parser(contents).parse().getResults();
 		results.calculate();
 	}
@@ -52,6 +53,15 @@ public class ResultsTest {
 	@Test
 	public void testGetDPS() {
 		System.out.println("DPS: "+results.getDPS(index));
+	}
+	
+	@Test
+	public void testGetDPS_Overloaded(){
+		Calendar start = results.getStartTime(index);
+		long end = 1;
+		double expected = 29;
+		double actual = results.getDPS(start, end);
+		assertEquals(expected, actual, 1e-8);
 	}
 
 }
