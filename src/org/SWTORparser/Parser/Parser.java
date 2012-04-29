@@ -62,5 +62,17 @@ public class Parser {
 		}
 		return results;
 	}
+	
+	/**
+	 * Calculates the results and returns a List<Combat> of all combat sessions.
+	 * This method also eliminates the need to call Parser.parse()
+	 * @return A list of all Combat sessions parsed
+	 */
+	public List<Combat> calcResultsGetCombat(){
+		this.parse();
+		Results results = this.getResults();
+		results.calculate();
+		return results.getAllCombatResults();
+	}
 
 }
