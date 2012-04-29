@@ -18,8 +18,21 @@ public class FileUtils {
 	 * Pass the full file and path to initialize
 	 * @param fileName
 	 */
-	public FileUtils(String fileName) {
-		this.file = FileSystems.getDefault().getPath(fileName);
+	public FileUtils(String file) {
+		this.setFile(file);
+	}
+	
+	/**
+	 * Default constructor
+	 */
+	public FileUtils(){}
+	
+	/**
+	 * Sets the file to be manipulated
+	 * @param file
+	 */
+	public void setFile(String file){
+		this.file = FileSystems.getDefault().getPath(file);
 	}
 	
 	/**
