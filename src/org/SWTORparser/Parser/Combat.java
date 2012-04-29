@@ -8,10 +8,10 @@ import swtor.parser.model.LogEntry;
 
 public class Combat {
 	
-	Calendar startTime, endTime;
-	int damage;
-	String playerName, targets;
-	List<LogEntry> logEntries;
+	private Calendar startTime, endTime;
+	private int damage;
+	private String playerName, targets;
+	private List<LogEntry> logEntries;
 	
 	public Combat(List<LogEntry> logEntries){
 		this.logEntries = logEntries;

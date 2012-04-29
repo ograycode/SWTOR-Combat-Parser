@@ -10,12 +10,18 @@ import swtor.parser.model.LogEntry;
 
 public class Results {
 	
-	List<LogEntry> parsedContents;
-	List<Integer> damage;
-	List<Calendar> startTime;
-	List<Calendar> endTime;
-	List<String> fightName;
-	List<Combat> combat;
+	@Deprecated
+	private List<LogEntry> parsedContents;
+	@Deprecated
+	private List<Integer> damage;
+	@Deprecated
+	private List<Calendar> startTime;
+	@Deprecated
+	private List<Calendar> endTime;
+	@Deprecated
+	private List<String> fightName;
+	
+	private List<Combat> combat;
 
 	public Results(List<LogEntry> parsedContents) {
 		this.parsedContents = parsedContents;
