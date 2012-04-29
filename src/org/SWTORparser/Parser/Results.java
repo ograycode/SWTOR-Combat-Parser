@@ -15,7 +15,6 @@ import swtor.parser.model.LogEntry;
  */
 public class Results {
 	
-	@Deprecated
 	private List<LogEntry> parsedContents;
 	@Deprecated
 	private List<Integer> damage;
@@ -51,10 +50,15 @@ public class Results {
 				this.combat.get(index).setPlayerName(entry.getSource());
 			}
 			if (inCombat){
-				if(entry.sourceIsPlayer() && entry.getType() == EntryType.DAMAGE){
-					addDamage(index, entry.getValue());
-					//Added for refactoring
-					this.combat.get(index).addDamage(entry.getValue());
+				if(entry.sourceIsPlayer()){
+					if (entry.getType() == EntryType.DAMAGE){
+						addDamage(index, entry.getValue());
+						//Added for refactoring
+						this.combat.get(index).addDamage(entry.getValue());
+					}
+					else if(entry.getType() == EntryType.HEAL){
+						this.combat.get(index).addToHealing(entry.getValue());
+					}
 				}
 			}
 			if (entry.getType() == EntryType.EXIT_COMBAT){
