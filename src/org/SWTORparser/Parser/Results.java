@@ -8,6 +8,11 @@ import java.util.List;
 import swtor.parser.constant.EntryType;
 import swtor.parser.model.LogEntry;
 
+/**
+ * Calculates the results of the parsed contents of a file
+ * @author Jason Gray
+ *
+ */
 public class Results {
 	
 	@Deprecated

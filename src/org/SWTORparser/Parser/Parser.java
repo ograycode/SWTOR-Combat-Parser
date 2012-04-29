@@ -64,7 +64,7 @@ public class Parser {
 	}
 	
 	/**
-	 * Calculates the results and returns a List<Combat> of all combat sessions.
+	 * Calculates the results and returns a List{@literal<}Combat> of all combat sessions.
 	 * This method also eliminates the need to call Parser.parse()
 	 * @return A list of all Combat sessions parsed
 	 */
