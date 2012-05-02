@@ -90,5 +90,12 @@ public class CombatTest {
 		assertEquals(0, rHealing);
 		System.out.println("Received Healing: " + rHealing);
 	}
+	
+	@Test
+	public void testGetHealing(){
+		int pHealing = combat.getHealing();
+		assertEquals(0, pHealing);
+		System.out.println("Healing: " + pHealing);
+	}
 
 }
