@@ -64,6 +64,9 @@ public class Results {
 					if(entry.getType() == EntryType.DAMAGE){
 						this.combat.get(index).addTakenDamage(entry.getValue());
 					}
+					else if (entry.getType() == EntryType.HEAL){
+						this.combat.get(index).addToPlayerReceivedHealing(entry.getValue());
+					}
 				}
 			}
 			if (entry.getType() == EntryType.EXIT_COMBAT){

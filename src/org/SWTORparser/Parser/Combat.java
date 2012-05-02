@@ -9,7 +9,7 @@ import swtor.parser.model.LogEntry;
 public class Combat {
 	
 	private Calendar startTime, endTime;
-	private int damage, healing, takenDamage;
+	private int damage, healing, takenDamage, receivedHealing;
 	private String playerName, targets;
 	private List<LogEntry> logEntries;
 	
@@ -187,6 +187,28 @@ public class Combat {
 	 */
 	public void setTakenDamange(int value){
 		this.takenDamage = value;
+	}
+
+	/**
+	 * Adds healing that the player received from any source
+	 * @param value
+	 */
+	public void addToPlayerReceivedHealing(int value) {
+		this.setReceivedHealing(this.getReceivedHealing()+value);
+	}
+
+	/**
+	 * @return the receivedHealing
+	 */
+	public int getReceivedHealing() {
+		return receivedHealing;
+	}
+
+	/**
+	 * @param receivedHealing the receivedHealing to set
+	 */
+	public void setReceivedHealing(int receivedHealing) {
+		this.receivedHealing = receivedHealing;
 	}
 
 }
