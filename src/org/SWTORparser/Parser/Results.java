@@ -60,6 +60,11 @@ public class Results {
 						this.combat.get(index).addToHealing(entry.getValue());
 					}
 				}
+				else if(entry.targetIsPlayer()){
+					if(entry.getType() == EntryType.DAMAGE){
+						this.combat.get(index).addTakenDamage(entry.getValue());
+					}
+				}
 			}
 			if (entry.getType() == EntryType.EXIT_COMBAT){
 				inCombat = false;

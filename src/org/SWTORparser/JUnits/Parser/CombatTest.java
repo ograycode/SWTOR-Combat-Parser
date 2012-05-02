@@ -76,5 +76,12 @@ public class CombatTest {
 		assertEquals(29, dps, helper.getDelta());
 		System.out.println("One Sec DPS: " + dps);
 	}
+	
+	@Test
+	public void testGetTakenDamage(){
+		int takenDamage = combat.getTakenDamage();
+		assertEquals(420, takenDamage);
+		System.out.println("Damage Taken: " + takenDamage);
+	}
 
 }
