@@ -59,8 +59,9 @@ public class CombatTest {
 
 	@Test
 	public void testGetTargets() {
-		System.out.println("Targets: " + combat.getTargets());
-		fail("Not yet implemented");
+		String targets = combat.getTargets();
+		assertEquals("Fa'athra Gangster Fa'athra Street Captain", targets);
+		System.out.println("Targets: " + targets);
 	}
 
 	@Test

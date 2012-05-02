@@ -10,7 +10,7 @@ public class Combat {
 	
 	private Calendar startTime, endTime;
 	private int damage, healing, takenDamage, receivedHealing;
-	private String playerName, targets;
+	private String playerName, targets = "";
 	private List<LogEntry> logEntries;
 	
 	public Combat(List<LogEntry> logEntries){
@@ -89,7 +89,7 @@ public class Combat {
 	 * @return the targets
 	 */
 	public String getTargets() {
-		return targets;
+		return targets.trim();
 	}
 	/**
 	 * @param targets the targets to set
@@ -209,6 +209,17 @@ public class Combat {
 	 */
 	public void setReceivedHealing(int receivedHealing) {
 		this.receivedHealing = receivedHealing;
+	}
+
+	/**
+	 * Adds the specified target to the target list, if it is not already there
+	 * @param target
+	 */
+	public void addToTargets(String target) {
+		if(!this.targets.contains(target)){
+			this.setTargets(this.targets.concat(" " + target));
+		}
+		
 	}
 
 }

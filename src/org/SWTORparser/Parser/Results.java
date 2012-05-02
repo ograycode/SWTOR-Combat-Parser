@@ -55,6 +55,7 @@ public class Results {
 						addDamage(index, entry.getValue());
 						//Added for refactoring
 						this.combat.get(index).addDamage(entry.getValue());
+						this.combat.get(index).addToTargets(entry.getTarget());
 					}
 					else if(entry.getType() == EntryType.HEAL){
 						this.combat.get(index).addToHealing(entry.getValue());
