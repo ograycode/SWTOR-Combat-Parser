@@ -59,8 +59,11 @@ public class CombatTest {
 
 	@Test
 	public void testGetTargets() {
-		String targets = combat.getTargets();
-		assertEquals("Fa'athra Gangster Fa'athra Street Captain", targets);
+		List<String> targets = combat.getTargets();
+		String [] taActual = new String [targets.size()];
+		targets.toArray(taActual);
+		String [] taExpected = {"Fa'athra Gangster","Fa'athra Street Captain"};
+		assertArrayEquals(taExpected, taActual);
 		System.out.println("Targets: " + targets);
 	}
 

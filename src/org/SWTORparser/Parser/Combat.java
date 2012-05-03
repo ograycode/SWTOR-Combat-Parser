@@ -1,5 +1,6 @@
 package org.SWTORparser.Parser;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,11 +11,13 @@ public class Combat {
 	
 	private Calendar startTime, endTime;
 	private int damage, healing, takenDamage, receivedHealing;
-	private String playerName, targets = "";
+	private String playerName;
+	private List<String> targets;
 	private List<LogEntry> logEntries;
 	
 	public Combat(List<LogEntry> logEntries){
 		this.logEntries = logEntries;
+		this.targets = new ArrayList<>();
 	}
 	
 	/**
@@ -88,13 +91,13 @@ public class Combat {
 	/**
 	 * @return the targets
 	 */
-	public String getTargets() {
-		return targets.trim();
+	public List<String> getTargets() {
+		return targets;
 	}
 	/**
 	 * @param targets the targets to set
 	 */
-	public void setTargets(String targets) {
+	public void setTargets(List<String> targets) {
 		this.targets = targets;
 	}
 	
@@ -216,10 +219,15 @@ public class Combat {
 	 * @param target
 	 */
 	public void addToTargets(String target) {
-		if(!this.targets.contains(target)){
-			this.setTargets(this.targets.concat(" " + target));
+		boolean found = false;
+		for (String t : targets){
+			if (t.contains(target)){
+				found = true;
+			}
 		}
-		
+		if (!found){
+			this.targets.add(target);
+		}
 	}
 
 }
